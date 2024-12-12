@@ -4,10 +4,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.DotNet.Scaffolding.Shared.Messaging;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using carGooBackend.Models;
+using Microsoft.CodeAnalysis.CSharp;
+using carGooBackend.Data;
 
 namespace carGooBackend.Controllers
 {
@@ -17,10 +19,12 @@ namespace carGooBackend.Controllers
     {
         private readonly UserManager<Korisnik> userManager;
         private readonly ITokenRepository tokenRepository;
+        private readonly CarGooDataContext _context;
 
-        public AuthController(UserManager<Korisnik> userManager, ITokenRepository tokenRepository)
+        public AuthController(UserManager<Korisnik> userManager, ITokenRepository tokenRepository, CarGooDataContext context)
         {
             this.userManager = userManager;
+            _context = context;
             this.tokenRepository = tokenRepository;
         }
 
@@ -29,8 +33,9 @@ namespace carGooBackend.Controllers
         [Route("Register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDTO registerRequestDto)
         {
-            // Proveri da li korisnik sa datim email-om već postoji
             var existingUser = await userManager.FindByEmailAsync(registerRequestDto.Mail);
+            var preduzeces = await _context.Preduzeca.ToListAsync();  // Učitajte sve preduzetnike (preduzeća)
+
             if (existingUser != null)
             {
                 return BadRequest(new { Message = $"Email '{registerRequestDto.Mail}' je već zauzet." });
@@ -54,18 +59,32 @@ namespace carGooBackend.Controllers
                     var roleResult = await userManager.AddToRolesAsync(identityUser, registerRequestDto.Roles);
                     if (roleResult.Succeeded)
                     {
-                        return Ok(new { Message = "Korisnik je registrovan! Molimo vas da se prijavite" });
+                        var preduzece = preduzeces.FirstOrDefault(p => p.Id == identityUser.PreduzeceId);  // Pronađite odgovarajuće preduzeće
+
+                        if (preduzece != null)
+                        {
+                            preduzece.Korisnici.Add(identityUser);  // Dodajte korisnika u kolekciju preduzeća
+
+                            // Ne zaboravite sačuvati promene u bazi podataka
+                            await _context.SaveChangesAsync();
+
+                            return Ok(new { Message = "Korisnik je uspešno kreiran!" });
+                        }
+                        else
+                        {
+                            return BadRequest(new { Message = "Preduzeće nije pronađeno!" });
+                        }
                     }
                     else
                     {
-                        return BadRequest(new { Message = "Neuspešno dodeljivanje uloga", Errors = roleResult.Errors });
+                        return BadRequest(new { Message = "Neuspešno dodeljivanje vrste korisnika", Errors = roleResult.Errors });
                     }
                 }
-                return Ok(new { Message = "Korisnik je registrovan bez uloga! Molimo vas da se prijavite" });
+                return Ok(new { Message = "Korisnik registrovan ali nema vrstu korisnika! Molimo vas da se prijavite" });
             }
             else
             {
-                return BadRequest(new { Message = "Registracija korisnika nije uspela", Errors = identityResult.Errors });
+                return BadRequest(new { Message = "Neuspešna registracija!", Errors = identityResult.Errors });
             }
         }
 
@@ -80,7 +99,6 @@ namespace carGooBackend.Controllers
                 var checkPasswordResult = await userManager.CheckPasswordAsync(user, loginRequestDto.Password);
                 if (checkPasswordResult)
                 {
-                    // Kreiranje tokena
                     var roles = await userManager.GetRolesAsync(user);
                     if (roles != null)
                     {
@@ -92,11 +110,44 @@ namespace carGooBackend.Controllers
                         return Ok(response);
                     }
                 }
-                return BadRequest(new { Message = "Šifra nije ispravna" });
+                return BadRequest(new { Message = "Pogresna lozinka" });
             }
-            return BadRequest(new { Message = "Uneta email adresa ne postoji" });
+            return BadRequest(new { Message = "Uneti mail ne postoji" });
         }
 
+        // GET api/auth/GetAllUsers
+        [HttpGet]
+        [Route("GetAllUsers")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            try
+            {
+                var users = await userManager.Users.ToListAsync();
+
+                var userDtos = new List<object>();
+
+                foreach (var user in users)
+                {
+                    var roles = await userManager.GetRolesAsync(user);
+
+                    userDtos.Add(new
+                    {
+                        user.Id,
+                        user.UserName,
+                        user.Email,
+                        user.FirstName,
+                        user.LastName,
+                        user.PhoneNumber,
+                        Roles = roles // Include roles in the response
+                    });
+                }
+
+                return Ok(userDtos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { Message = "Došlo je do greške na serveru.", Error = ex.Message });
+            }
+        }
     }
 }
-

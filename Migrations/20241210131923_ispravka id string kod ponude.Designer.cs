@@ -12,8 +12,8 @@ using carGooBackend.Data;
 namespace carGooBackend.Migrations
 {
     [DbContext(typeof(CarGooDataContext))]
-    [Migration("20241122153611_init dataBase")]
-    partial class initdataBase
+    [Migration("20241210131923_ispravka id string kod ponude")]
+    partial class ispravkaidstringkodponude
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -259,6 +259,75 @@ namespace carGooBackend.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("carGooBackend.Models.Ponuda", b =>
+                {
+                    b.Property<Guid>("PonudaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Cena")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DrzavaI")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DrzavaU")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Duzina")
+                        .HasColumnType("float");
+
+                    b.Property<string>("IdKorisnika")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("IdPreduzeca")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Istovar")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MestoI")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MestoU")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Tezina")
+                        .HasColumnType("float");
+
+                    b.Property<string>("TipKamiona")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TipNadogradnje")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Utovar")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("VrstaTereta")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZamenaPaleta")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PonudaId");
+
+                    b.HasIndex("IdKorisnika");
+
+                    b.HasIndex("IdPreduzeca");
+
+                    b.ToTable("Ponude");
+                });
+
             modelBuilder.Entity("carGooBackend.Models.Preduzece", b =>
                 {
                     b.Property<Guid>("Id")
@@ -352,6 +421,25 @@ namespace carGooBackend.Migrations
                         .HasForeignKey("PreduzeceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Preduzece");
+                });
+
+            modelBuilder.Entity("carGooBackend.Models.Ponuda", b =>
+                {
+                    b.HasOne("carGooBackend.Models.Korisnik", "Korisnik")
+                        .WithMany()
+                        .HasForeignKey("IdKorisnika")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("carGooBackend.Models.Preduzece", "Preduzece")
+                        .WithMany()
+                        .HasForeignKey("IdPreduzeca")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Korisnik");
 
                     b.Navigation("Preduzece");
                 });

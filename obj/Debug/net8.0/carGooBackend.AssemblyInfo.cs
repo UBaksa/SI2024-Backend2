@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("carGooBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f03f9ad7f6c02b376d78e5e8360edb27daea939a")]
 [assembly: System.Reflection.AssemblyProductAttribute("carGooBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("carGooBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

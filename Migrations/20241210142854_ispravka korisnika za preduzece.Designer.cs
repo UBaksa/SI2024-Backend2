@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using carGooBackend.Data;
 
@@ -11,9 +12,11 @@ using carGooBackend.Data;
 namespace carGooBackend.Migrations
 {
     [DbContext(typeof(CarGooDataContext))]
-    partial class CarGooDataContextModelSnapshot : ModelSnapshot
+    [Migration("20241210142854_ispravka korisnika za preduzece")]
+    partial class ispravkakorisnikazapreduzece
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -328,67 +331,6 @@ namespace carGooBackend.Migrations
                     b.ToTable("Ponude");
                 });
 
-            modelBuilder.Entity("carGooBackend.Models.PonudaVozila", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("DrzavaI")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DrzavaU")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Duzina")
-                        .HasColumnType("float");
-
-                    b.Property<string>("IdKorisnika")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<Guid>("IdPreduzeca")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("Istovar")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("MestoI")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MestoU")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Tezina")
-                        .HasColumnType("float");
-
-                    b.Property<string>("TipKamiona")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TipNadogradnje")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Utovar")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Vreme")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdKorisnika");
-
-                    b.HasIndex("IdPreduzeca");
-
-                    b.ToTable("PonudaVozila");
-                });
-
             modelBuilder.Entity("carGooBackend.Models.Preduzece", b =>
                 {
                     b.Property<Guid>("Id")
@@ -480,7 +422,7 @@ namespace carGooBackend.Migrations
                     b.HasOne("carGooBackend.Models.Preduzece", "Preduzece")
                         .WithMany("Korisnici")
                         .HasForeignKey("PreduzeceId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Preduzece");
@@ -492,25 +434,6 @@ namespace carGooBackend.Migrations
                         .WithMany()
                         .HasForeignKey("IdKorisnika")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("carGooBackend.Models.Preduzece", "Preduzece")
-                        .WithMany()
-                        .HasForeignKey("IdPreduzeca")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Korisnik");
-
-                    b.Navigation("Preduzece");
-                });
-
-            modelBuilder.Entity("carGooBackend.Models.PonudaVozila", b =>
-                {
-                    b.HasOne("carGooBackend.Models.Korisnik", "Korisnik")
-                        .WithMany()
-                        .HasForeignKey("IdKorisnika")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("carGooBackend.Models.Preduzece", "Preduzece")

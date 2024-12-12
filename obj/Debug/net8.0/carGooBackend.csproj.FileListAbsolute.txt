@@ -284,3 +284,4 @@ C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\carGooBa
 C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\ref\carGooBackend.dll
 C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\carGooBackend.sourcelink.json

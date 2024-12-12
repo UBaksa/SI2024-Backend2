@@ -1,6 +1,0 @@
-@carGooBackend_HostAddress = http://localhost:5130
-
-GET {{carGooBackend_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 
 namespace carGooBackend.Data
@@ -13,15 +14,32 @@ namespace carGooBackend.Data
         }
 
         public DbSet<Preduzece> Preduzeca { get; set;}
+        public DbSet<Ponuda> Ponude { get; set;}
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            // Definisanje veze između Korisnik i Preduzece
+            builder.Entity<Korisnik>()
+                .HasOne(k => k.Preduzece)  // Korisnik ima jedno preduzeće
+                .WithMany(p => p.Korisnici) // Preduzeće ima više korisnika
+                .HasForeignKey(k => k.PreduzeceId)  // PreduzeceId je strani ključ
+                .OnDelete(DeleteBehavior.Restrict);  // Definišite ponašanje pri brisanju
+
+            // Veza između Ponuda i Korisnik
+            builder.Entity<Ponuda>()
+                .HasOne(p => p.Korisnik)
+                .WithMany()
+                .HasForeignKey(p => p.IdKorisnika)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Definisanje uloga
             var dispecerRoleId = "8a000e3b-b915-43f1-b90e-b28075ec8cac";
             var prevoznikRoleId = "415a7c65-81dd-4fe3-9c44-9493db860c4b";
-            var kontrolerRoleId = "415a7c65-81dd-4fe3-9c44-9493db860c4c";//da promenim sifre!, da stavim hashovane
+            var kontrolerRoleId = "415a7c65-81dd-4fe3-9c44-9493db860c4c";
             var roles = new List<IdentityRole>
     {
-		new IdentityRole
+        new IdentityRole
         {
             Id = dispecerRoleId,
             ConcurrencyStamp = dispecerRoleId,
@@ -45,6 +63,8 @@ namespace carGooBackend.Data
     };
             builder.Entity<IdentityRole>().HasData(roles);
         }
+        public DbSet<carGooBackend.Models.PonudaVozila> PonudaVozila { get; set; } = default!;
+
 
     }
 }
