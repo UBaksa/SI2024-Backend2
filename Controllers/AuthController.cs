@@ -40,7 +40,7 @@ namespace carGooBackend.Controllers
             {
                 return BadRequest(new { Message = $"Email '{registerRequestDto.Mail}' je već zauzet." });
             }
-
+            //nesto
             var identityUser = new Korisnik
             {
                 UserName = registerRequestDto.Mail,
