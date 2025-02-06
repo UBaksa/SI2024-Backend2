@@ -10,6 +10,7 @@ using carGooBackend.Models;
 using Microsoft.AspNetCore.Authorization;
 using carGooBackend.Models.DTO;
 using Microsoft.AspNetCore.Identity;
+using carGooBackend.Services;
 
 namespace carGooBackend.Controllers
 {
@@ -19,11 +20,13 @@ namespace carGooBackend.Controllers
     {
         private readonly CarGooDataContext _context;
         private readonly UserManager<Korisnik> userManager;
+        private readonly ImageUploadService _imageUploadService;
 
-        public PreduzecesController(CarGooDataContext context, UserManager<Korisnik> userManager)
+        public PreduzecesController(CarGooDataContext context, UserManager<Korisnik> userManager, ImageUploadService imageUploadService)
         {
             _context = context;
             this.userManager = userManager;
+            _imageUploadService = imageUploadService;
         }
 
         // GET: api/Preduzeces
@@ -41,6 +44,7 @@ namespace carGooBackend.Controllers
                     CompanyMail = p.CompanyMail,
                     CompanyPIB = p.CompanyPIB,
                     CompanyPhone = p.CompanyPhone,
+                    CompanyPhoto = p.CompanyPhoto,
                     Korisnici = p.Korisnici.Select(k => new ReturnKorisnikDTO
                     {
                         FirstName = k.FirstName,
@@ -54,19 +58,42 @@ namespace carGooBackend.Controllers
         }
 
 
-        // GET: api/Preduzeces/5
+        // GET: api/Preduzeces/id
         [HttpGet("{id}")]
-        public async Task<ActionResult<Preduzece>> GetPreduzece(Guid id)
+        public async Task<ActionResult<PreduzecetToReturnDTO>> GetPreduzece(Guid id)
         {
-            var preduzece = await _context.Preduzeca.FindAsync(id);
+            var preduzece = await _context.Preduzeca
+                .Include(p => p.Korisnici) 
+                .Where(p => p.Id == id) 
+                .Select(p => new PreduzecetToReturnDTO
+                {
+                    Id = p.Id,
+                    CompanyName = p.CompanyName,
+                    CompanyState = p.CompanyState,
+                    CompanyCity = p.CompanyCity,
+                    CompanyMail = p.CompanyMail,
+                    CompanyPIB = p.CompanyPIB,
+                    CompanyPhone = p.CompanyPhone,
+                    CompanyPhoto = p.CompanyPhoto,
+                    Korisnici = p.Korisnici.Select(k => new ReturnKorisnikDTO
+                    {
+                        FirstName = k.FirstName,
+                        LastName = k.LastName,
+                        PreduzeceId = k.PreduzeceId,
+                        PhoneNumber = k.PhoneNumber,
+                        Mail = k.Email
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync();
 
             if (preduzece == null)
             {
                 return NotFound();
             }
 
-            return preduzece;
+            return Ok(preduzece);
         }
+
 
         // PUT: api/Preduzeces/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -102,16 +129,22 @@ namespace carGooBackend.Controllers
         // POST: api/Preduzeces
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Preduzece>> PostPreduzece([FromBody] CreatePreduzeceDTO createPreduzeceDto)
+        public async Task<ActionResult<Preduzece>> PostPreduzece([FromForm] CreatePreduzeceDTO createPreduzeceDto)
         {
 
             try
             {
-                // Create a new Preduzece entity
+                var result = await _imageUploadService.UploadImageAsync(createPreduzeceDto.companyPhoto);
+                if (!result.Success)
+                {
+                    return BadRequest(result.ErrorMessage);
+                }
+                var imgUrl = result.Url;
                 var preduzece = new Preduzece
                 {
                     Id = Guid.NewGuid(),
                     CompanyName = createPreduzeceDto.CompanyName,
+                    CompanyPhoto = imgUrl,
                     CompanyState = createPreduzeceDto.CompanyState,
                     CompanyCity = createPreduzeceDto.CompanyCity,
                     CompanyMail = createPreduzeceDto.CompanyMail,

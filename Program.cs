@@ -1,12 +1,18 @@
+using System;
+using System.Text;  // Added this for Encoding
+using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using carGooBackend.Data;
 using carGooBackend.Models;
 using carGooBackend.Repositories;
+using carGooBackend.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +21,7 @@ builder.Services.AddDbContext<CarGooDataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
+builder.Services.AddScoped<IEmailService, EmailService>();  
 
 builder.Services.AddIdentityCore<Korisnik>()
     .AddRoles<IdentityRole>()
@@ -26,8 +33,11 @@ builder.Services.Configure<IdentityOptions>(options =>
 {
     options.Password.RequireDigit = true;
     options.Password.RequireUppercase = true;
-    options.Password.RequiredLength = 6;
+    options.Password.RequiredLength = 5;
     options.Password.RequireNonAlphanumeric = false;
+
+    options.SignIn.RequireConfirmedEmail = true;
+    options.User.RequireUniqueEmail = true;
 });
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -42,14 +52,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
 
 // CORS Configuration
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", builder =>
     {
-        builder.WithOrigins("http://localhost:3000")  // Postavljanje dozvoljenog izvora
+        builder.WithOrigins("http://localhost:3000")
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
@@ -82,10 +96,14 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+builder.Services.AddHostedService<OfferCleanupService>();
+builder.Services.AddHostedService<VehicleOfferCleanupService>();
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<ImageUploadService>();
 var app = builder.Build();
 
 // Apply CORS policy
-app.UseCors("AllowReactApp");  // Pozivanje prave CORS politike
+app.UseCors("AllowReactApp");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

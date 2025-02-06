@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using carGooBackend.Data;
 using carGooBackend.Models;
 using carGooBackend.Models.DTO;
+using carGooBackend.Services;
 
 namespace carGooBackend.Controllers
 {
@@ -31,7 +32,7 @@ namespace carGooBackend.Controllers
 
             //map domain models to DTOs
             var ponudeDTO = new List<PonudeDTO>();
-            foreach(var ponuda in ponude)
+            foreach (var ponuda in ponude)
             {
                 ponudeDTO.Add(new PonudeDTO()
                 {
@@ -49,12 +50,12 @@ namespace carGooBackend.Controllers
                     VrstaTereta = ponuda.VrstaTereta,
                     Cena = ponuda.Cena,
                     ZamenaPaleta = ponuda.ZamenaPaleta,
-                    IdKorisnika = ponuda.IdKorisnika, 
+                    IdKorisnika = ponuda.IdKorisnika,
                     IdPreduzeca = ponuda.IdPreduzeca,
                     Vreme = ponuda.Vreme
                 });
             }
-            
+
             //returning DTOs
             return Ok(ponudeDTO);
         }
@@ -65,33 +66,17 @@ namespace carGooBackend.Controllers
         [Route("{id:Guid}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
-            //getting domain model from database
-            var ponuda = await _context.Ponude.FindAsync(id);
+            var ponuda = await _context.Ponude
+                .Include(p => p.Korisnik)
+                .Include(p => p.Preduzece)
+                .FirstOrDefaultAsync(p => p.PonudaId == id);
 
-            if(ponuda == null)
+            if (ponuda == null)
             {
                 return NotFound();
             }
-            //map/convert ponuda domain model to ponuda DTO
-            var ponudaDTO = new PonudeDTO
-            {
-                PonudaId = ponuda.PonudaId,
-                DrzavaU = ponuda.DrzavaU,
-                DrzavaI = ponuda.DrzavaI,
-                MestoU = ponuda.MestoU,
-                MestoI = ponuda.MestoI,
-                Utovar = ponuda.Utovar,
-                Istovar = ponuda.Istovar,
-                Duzina = ponuda.Duzina,
-                Tezina = ponuda.Tezina,
-                TipNadogradnje = ponuda.TipNadogradnje,
-                TipKamiona = ponuda.TipKamiona,
-                VrstaTereta = ponuda.VrstaTereta,
-                Cena = ponuda.Cena,
-                ZamenaPaleta = ponuda.ZamenaPaleta
-            };
 
-            //returning DTO back to client
+            var ponudaDTO = PonudaMapper.ToPonudaDetailsDTO(ponuda);
             return Ok(ponudaDTO);
         }
 
@@ -123,8 +108,8 @@ namespace carGooBackend.Controllers
             };
             //use domain to create Ponuda 
 
-           await _context.Ponude.AddAsync( ponuda );
-           await _context.SaveChangesAsync();
+            await _context.Ponude.AddAsync(ponuda);
+            await _context.SaveChangesAsync();
 
             //map domain model back to dto
 
@@ -159,9 +144,9 @@ namespace carGooBackend.Controllers
         [Route("{id:Guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdatePonudeDTO updatePonudeDTO)
         {
-            var ponuda = await _context.Ponude.FirstOrDefaultAsync(x=>x.PonudaId == id);
+            var ponuda = await _context.Ponude.FirstOrDefaultAsync(x => x.PonudaId == id);
 
-            if(ponuda == null)
+            if (ponuda == null)
             {
                 return NotFound();
             }
@@ -213,8 +198,8 @@ namespace carGooBackend.Controllers
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
             var ponuda = await _context.Ponude.FirstOrDefaultAsync(x => x.PonudaId == id);
-            
-            if(ponuda == null)
+
+            if (ponuda == null)
             {
                 return NotFound();
             }
@@ -245,5 +230,46 @@ namespace carGooBackend.Controllers
             };
             return Ok(ponudaDTO);
         }
+        // GET: api/Ponudas/preduzeceponude/{idPreduzece}
+        [HttpGet("preduzeceponude/{idPreduzece:Guid}")]
+        public async Task<IActionResult> GetByPreduzece([FromRoute] Guid idPreduzece)
+        {
+            // Pridruživanje ponuda sa preduzećima
+            var ponude = await _context.Ponude
+                .Where(p => p.IdPreduzeca == idPreduzece)
+                .Include(p => p.Preduzece) // Pretpostavka: Ponuda ima navigaciono svojstvo `Preduzece`
+                .ToListAsync();
+
+            if (!ponude.Any())
+            {
+                return NotFound("Nema ponuda za zadato preduzeće.");
+            }
+
+            // Base URL za slike preduzeća
+            var baseUrl = $"{Request.Scheme}://{Request.Host}/images/";
+
+            // Mapiranje podataka u DTO
+            var ponudeDTO = ponude.Select(ponuda => new PonudeDTO
+            {
+                PonudaId = ponuda.PonudaId,
+                DrzavaU = ponuda.DrzavaU,
+                DrzavaI = ponuda.DrzavaI,
+                MestoU = ponuda.MestoU,
+                MestoI = ponuda.MestoI,
+                Utovar = ponuda.Utovar,
+                Istovar = ponuda.Istovar,
+                Duzina = ponuda.Duzina,
+                Tezina = ponuda.Tezina,
+                TipNadogradnje = ponuda.TipNadogradnje,
+                TipKamiona = ponuda.TipKamiona,
+                VrstaTereta = ponuda.VrstaTereta,
+                Cena = ponuda.Cena,
+                ZamenaPaleta = ponuda.ZamenaPaleta,
+                Vreme = ponuda.Vreme,
+                CompanyPhotoUrl = ponuda.Preduzece.CompanyPhoto
+            }).ToList();
+
+            return Ok(ponudeDTO);
+        }
     }
-}
+    }

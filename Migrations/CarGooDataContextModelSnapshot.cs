@@ -201,6 +201,10 @@ namespace carGooBackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.PrimitiveCollection<string>("Languages")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -241,6 +245,9 @@ namespace carGooBackend.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<string>("UserPicture")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -254,6 +261,38 @@ namespace carGooBackend.Migrations
                     b.HasIndex("PreduzeceId");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("carGooBackend.Models.Obavestenje", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AutorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("DatumObjavljivanja")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Naslov")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProfilePicture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sadrzaj")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AutorId");
+
+                    b.ToTable("Obavestenje");
                 });
 
             modelBuilder.Entity("carGooBackend.Models.Ponuda", b =>
@@ -363,6 +402,10 @@ namespace carGooBackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("RadiusI")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("Tezina")
                         .HasColumnType("float");
 
@@ -412,6 +455,10 @@ namespace carGooBackend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CompanyPhone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyPhoto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -484,6 +531,17 @@ namespace carGooBackend.Migrations
                         .IsRequired();
 
                     b.Navigation("Preduzece");
+                });
+
+            modelBuilder.Entity("carGooBackend.Models.Obavestenje", b =>
+                {
+                    b.HasOne("carGooBackend.Models.Korisnik", "Autor")
+                        .WithMany()
+                        .HasForeignKey("AutorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Autor");
                 });
 
             modelBuilder.Entity("carGooBackend.Models.Ponuda", b =>

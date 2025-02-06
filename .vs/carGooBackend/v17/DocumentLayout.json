@@ -3,40 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|c:\\users\\korisnik\\desktop\\siprojekat2024\\cargoobackend\\controllers\\preduzecescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|solutionrelative:controllers\\preduzecescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|c:\\users\\korisnik\\desktop\\siprojekat2024\\cargoobackend\\controllers\\imageuploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|solutionrelative:controllers\\imageuploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|c:\\users\\korisnik\\desktop\\siprojekat2024\\cargoobackend\\models\\dto\\createpreduzecedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|solutionrelative:models\\dto\\createpreduzecedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|c:\\users\\korisnik\\desktop\\siprojekat2024\\cargoobackend\\controllers\\ponudavozilascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|solutionrelative:controllers\\ponudavozilascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|c:\\users\\korisnik\\desktop\\siprojekat2024\\cargoobackend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|c:\\users\\korisnik\\desktop\\siprojekat2024\\cargoobackend\\services\\imageuploadservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|solutionrelative:services\\imageuploadservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|c:\\users\\korisnik\\desktop\\siprojekat2024\\cargoobackend\\models\\korisnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|solutionrelative:models\\korisnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|c:\\users\\korisnik\\desktop\\siprojekat2024\\cargoobackend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|c:\\users\\korisnik\\desktop\\siprojekat2024\\cargoobackend\\models\\dto\\registerrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|solutionrelative:models\\dto\\registerrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|c:\\users\\korisnik\\desktop\\siprojekat2024\\cargoobackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|c:\\users\\korisnik\\desktop\\siprojekat2024\\cargoobackend\\models\\preduzece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|solutionrelative:models\\preduzece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|c:\\users\\korisnik\\desktop\\siprojekat2024\\cargoobackend\\models\\ponudavozila.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|solutionrelative:models\\ponudavozila.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|c:\\users\\korisnik\\desktop\\siprojekat2024\\cargoobackend\\models\\dto\\preduzecettoreturndto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B00A294D-B541-4ECF-9B81-15680F6CB1DF}|carGooBackend.csproj|solutionrelative:models\\dto\\preduzecettoreturndto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -57,16 +45,20 @@
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CreatePreduzeceDTO.cs",
-              "DocumentMoniker": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Models\\DTO\\CreatePreduzeceDTO.cs",
-              "RelativeDocumentMoniker": "Models\\DTO\\CreatePreduzeceDTO.cs",
-              "ToolTip": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Models\\DTO\\CreatePreduzeceDTO.cs",
-              "RelativeToolTip": "Models\\DTO\\CreatePreduzeceDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAdAAAA",
+              "DocumentIndex": 0,
+              "Title": "ImageUploadController.cs",
+              "DocumentMoniker": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Controllers\\ImageUploadController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ImageUploadController.cs",
+              "ToolTip": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Controllers\\ImageUploadController.cs",
+              "RelativeToolTip": "Controllers\\ImageUploadController.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAmwBIAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T11:29:28.66Z",
+              "WhenOpened": "2025-02-06T14:48:44.549Z",
               "EditorCaption": ""
             },
             {
@@ -77,48 +69,35 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAADwAAAAAAAAAAAAAAFoAAAAhAAAA",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAAAGYAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T11:11:34.161Z",
+              "WhenOpened": "2025-02-06T14:36:21.606Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PonudaVozilasController.cs",
-              "DocumentMoniker": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Controllers\\PonudaVozilasController.cs",
-              "RelativeDocumentMoniker": "Controllers\\PonudaVozilasController.cs",
-              "ToolTip": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Controllers\\PonudaVozilasController.cs",
-              "RelativeToolTip": "Controllers\\PonudaVozilasController.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABAAAAAhAAAA",
+              "DocumentIndex": 1,
+              "Title": "ImageUploadServices.cs",
+              "DocumentMoniker": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Services\\ImageUploadServices.cs",
+              "RelativeDocumentMoniker": "Services\\ImageUploadServices.cs",
+              "ToolTip": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Services\\ImageUploadServices.cs",
+              "RelativeToolTip": "Services\\ImageUploadServices.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T11:10:55.146Z",
+              "WhenOpened": "2025-02-06T14:17:05.732Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PreduzecesController.cs",
-              "DocumentMoniker": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Controllers\\PreduzecesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\PreduzecesController.cs",
-              "ToolTip": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Controllers\\PreduzecesController.cs",
-              "RelativeToolTip": "Controllers\\PreduzecesController.cs",
-              "ViewState": "AQIAAHwAAAAAAAAAAAAowKsAAAAFAAAA",
+              "DocumentIndex": 4,
+              "Title": "RegisterRequestDTO.cs",
+              "DocumentMoniker": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Models\\DTO\\RegisterRequestDTO.cs",
+              "RelativeDocumentMoniker": "Models\\DTO\\RegisterRequestDTO.cs",
+              "ToolTip": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Models\\DTO\\RegisterRequestDTO.cs",
+              "RelativeToolTip": "Models\\DTO\\RegisterRequestDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAIAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T11:01:55.529Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Preduzece.cs",
-              "DocumentMoniker": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Models\\Preduzece.cs",
-              "RelativeDocumentMoniker": "Models\\Preduzece.cs",
-              "ToolTip": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Models\\Preduzece.cs",
-              "RelativeToolTip": "Models\\Preduzece.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T10:58:03.944Z",
+              "WhenOpened": "2025-02-05T19:16:06.36Z",
               "EditorCaption": ""
             },
             {
@@ -129,48 +108,22 @@
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAIIAAABEAAAA",
+              "ViewState": "AQIAACcAAAAAAAAAAAA1wCIAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T10:59:31.291Z",
+              "WhenOpened": "2025-02-05T19:12:26.091Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Korisnik.cs",
               "DocumentMoniker": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Models\\Korisnik.cs",
               "RelativeDocumentMoniker": "Models\\Korisnik.cs",
               "ToolTip": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Models\\Korisnik.cs",
               "RelativeToolTip": "Models\\Korisnik.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAsAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T10:57:02.558Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PreduzecetToReturnDTO.cs",
-              "DocumentMoniker": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Models\\DTO\\PreduzecetToReturnDTO.cs",
-              "RelativeDocumentMoniker": "Models\\DTO\\PreduzecetToReturnDTO.cs",
-              "ToolTip": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Models\\DTO\\PreduzecetToReturnDTO.cs",
-              "RelativeToolTip": "Models\\DTO\\PreduzecetToReturnDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAA0AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T11:03:52.205Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PonudaVozila.cs",
-              "DocumentMoniker": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Models\\PonudaVozila.cs",
-              "RelativeDocumentMoniker": "Models\\PonudaVozila.cs",
-              "ToolTip": "C:\\Users\\korisnik\\Desktop\\siprojekat2024\\carGooBackend\\Models\\PonudaVozila.cs",
-              "RelativeToolTip": "Models\\PonudaVozila.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAkwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T10:59:24.432Z",
+              "WhenOpened": "2025-02-05T19:11:56.977Z",
               "EditorCaption": ""
             }
           ]

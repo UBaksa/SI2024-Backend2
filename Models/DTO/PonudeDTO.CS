@@ -20,5 +20,6 @@
         public string ZamenaPaleta { get; set; }
         public DateTime Vreme { get; set; } = DateTime.Now;
         public int Cena { get; set; }
+        public string CompanyPhotoUrl { get; set; }
     }
 }

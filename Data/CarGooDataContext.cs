@@ -15,16 +15,18 @@ namespace carGooBackend.Data
 
         public DbSet<Preduzece> Preduzeca { get; set;}
         public DbSet<Ponuda> Ponude { get; set;}
+        public DbSet<PonudaVozila> PonudaVozilas { get; set;}
+        public DbSet<Obavestenje> Obavestenja { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
             // Definisanje veze između Korisnik i Preduzece
             builder.Entity<Korisnik>()
-                .HasOne(k => k.Preduzece)  // Korisnik ima jedno preduzeće
-                .WithMany(p => p.Korisnici) // Preduzeće ima više korisnika
-                .HasForeignKey(k => k.PreduzeceId)  // PreduzeceId je strani ključ
-                .OnDelete(DeleteBehavior.Restrict);  // Definišite ponašanje pri brisanju
+                .HasOne(k => k.Preduzece)  
+                .WithMany(p => p.Korisnici) 
+                .HasForeignKey(k => k.PreduzeceId)  
+                .OnDelete(DeleteBehavior.Restrict);  
 
             // Veza između Ponuda i Korisnik
             builder.Entity<Ponuda>()
@@ -64,6 +66,7 @@ namespace carGooBackend.Data
             builder.Entity<IdentityRole>().HasData(roles);
         }
         public DbSet<carGooBackend.Models.PonudaVozila> PonudaVozila { get; set; } = default!;
+        public DbSet<carGooBackend.Models.Obavestenje> Obavestenje { get; set; } = default!;
 
 
     }

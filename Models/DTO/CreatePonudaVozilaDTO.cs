@@ -6,6 +6,7 @@
         public string DrzavaI { get; set; }
         public string MestoU { get; set; }
         public string MestoI { get; set; }
+        public string RadiusI { get; set; }
         public DateTime Utovar { get; set; }
         public DateTime Istovar { get; set; }
         public double Duzina { get; set; }

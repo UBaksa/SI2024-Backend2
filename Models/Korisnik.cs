@@ -8,7 +8,8 @@ namespace carGooBackend.Models
         public string LastName { get; set; }
         public Guid PreduzeceId { get; set; }
         public virtual Preduzece Preduzece { get; set; }
-
-        
+        public List<string> Languages { get; set; } = new List<string>();
+        public string? UserPicture { get; set; }
     }
+
 }
