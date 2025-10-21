@@ -270,11 +270,6 @@ C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\carGooBa
 C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\carGooBackend.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\staticwebassets\msbuild.carGooBackend.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\staticwebassets\msbuild.build.carGooBackend.props
-C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.carGooBackend.props
-C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.carGooBackend.props
-C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\scopedcss\bundle\carGooBackend.styles.css
 C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\carGooBa.89737AFA.Up2Date
 C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\carGooBackend.dll
@@ -285,3 +280,12 @@ C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\ref\carG
 C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\carGooBackend.sourcelink.json
+C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\bin\Debug\net8.0\carGooBackend.staticwebassets.endpoints.json
+C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\korisnik\Desktop\siprojekat2024\carGooBackend\bin\Debug\net8.0\CloudinaryDotNet.dll

@@ -71,49 +71,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "FirstName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "LastName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Mail",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Password",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "PhoneNumber",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "PreduzeceId",
-        "Type": "System.Guid",
-        "IsRequired": false
-      },
-      {
-        "Name": "Roles",
-        "Type": "System.String[]",
-        "IsRequired": false
-      },
-      {
-        "Name": "Languages",
-        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "Image",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
+        "Name": "registerRequestDto",
+        "Type": "carGooBackend.Models.DTO.RegisterRequestDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -132,34 +92,9 @@
         "IsRequired": true
       },
       {
-        "Name": "FirstName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "LastName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "PhoneNumber",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Languages",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "UserPicture",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
+        "Name": "model",
+        "Type": "carGooBackend.Models.DTO.UpdateUserDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -181,15 +116,20 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "carGooBackend.Controllers.ImageUploadController",
-    "Method": "UploadImage",
-    "RelativePath": "api/images/upload",
-    "HttpMethod": "POST",
+    "ContainingType": "carGooBackend.Controllers.AuthController",
+    "Method": "UploadUserImage",
+    "RelativePath": "api/Auth/user/upload-image/{id}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "file",
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "profileImage",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
       }
@@ -197,16 +137,16 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "carGooBackend.Controllers.ObavestenjesController",
-    "Method": "GetObavestenje",
-    "RelativePath": "api/Obavestenjes",
+    "ContainingType": "carGooBackend.Controllers.ObavestenjasController",
+    "Method": "GetObavestenja",
+    "RelativePath": "api/Obavestenjas",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[carGooBackend.DTOs.ObavestenjeDTO, carGooBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[carGooBackend.Models.Obavestenja, carGooBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -217,62 +157,22 @@
     ]
   },
   {
-    "ContainingType": "carGooBackend.Controllers.ObavestenjesController",
-    "Method": "PostObavestenje",
-    "RelativePath": "api/Obavestenjes",
+    "ContainingType": "carGooBackend.Controllers.ObavestenjasController",
+    "Method": "PostObavestenja",
+    "RelativePath": "api/Obavestenjas",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Id",
-        "Type": "System.Guid",
-        "IsRequired": false
-      },
-      {
-        "Name": "Naslov",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "DatumObjavljivanja",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "Sadrzaj",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ProfilePicture",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "AutorFirstName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "AutorLastName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "AutorId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Image",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
+        "Name": "obavestenja",
+        "Type": "carGooBackend.Models.Obavestenja",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "carGooBackend.DTOs.ObavestenjeDTO",
+        "Type": "carGooBackend.Models.Obavestenja",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -283,9 +183,9 @@
     ]
   },
   {
-    "ContainingType": "carGooBackend.Controllers.ObavestenjesController",
-    "Method": "GetObavestenje",
-    "RelativePath": "api/Obavestenjes/{id}",
+    "ContainingType": "carGooBackend.Controllers.ObavestenjasController",
+    "Method": "GetObavestenja",
+    "RelativePath": "api/Obavestenjas/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -298,7 +198,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "carGooBackend.DTOs.ObavestenjeDTO",
+        "Type": "carGooBackend.Models.Obavestenja",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -309,65 +209,30 @@
     ]
   },
   {
-    "ContainingType": "carGooBackend.Controllers.ObavestenjesController",
-    "Method": "PutObavestenje",
-    "RelativePath": "api/Obavestenjes/{id}",
+    "ContainingType": "carGooBackend.Controllers.ObavestenjasController",
+    "Method": "PutObavestenja",
+    "RelativePath": "api/Obavestenjas/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Id",
+        "Name": "id",
         "Type": "System.Guid",
         "IsRequired": true
       },
       {
-        "Name": "Naslov",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "DatumObjavljivanja",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "Sadrzaj",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ProfilePicture",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "AutorFirstName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "AutorLastName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "AutorId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Image",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
+        "Name": "obavestenja",
+        "Type": "carGooBackend.Models.Obavestenja",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "carGooBackend.Controllers.ObavestenjesController",
-    "Method": "DeleteObavestenje",
-    "RelativePath": "api/Obavestenjes/{id}",
+    "ContainingType": "carGooBackend.Controllers.ObavestenjasController",
+    "Method": "DeleteObavestenja",
+    "RelativePath": "api/Obavestenjas/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -376,6 +241,57 @@
         "Name": "id",
         "Type": "System.Guid",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "carGooBackend.Controllers.ObavestenjasController",
+    "Method": "CreateNotificationWithImage",
+    "RelativePath": "api/Obavestenjas/upload-notification",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Naziv",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Sadrzaj",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentDisposition",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Headers",
+        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
+        "IsRequired": false
+      },
+      {
+        "Name": "Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -549,7 +465,7 @@
   },
   {
     "ContainingType": "carGooBackend.Controllers.PonudaVozilasController",
-    "Method": "PutPonudaVozila",
+    "Method": "UpdatePonudaVozila",
     "RelativePath": "api/PonudaVozilas/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -561,8 +477,8 @@
         "IsRequired": true
       },
       {
-        "Name": "ponudaVozila",
-        "Type": "carGooBackend.Models.PonudaVozila",
+        "Name": "updatePonudaVoziloDTO",
+        "Type": "carGooBackend.Models.DTO.UpdatePonudaVoziloDTO",
         "IsRequired": true
       }
     ],
@@ -672,11 +588,6 @@
         "Name": "KorisnikIds",
         "Type": "System.String[]",
         "IsRequired": false
-      },
-      {
-        "Name": "companyPhoto",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -749,6 +660,43 @@
       {
         "Name": "id",
         "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "carGooBackend.Controllers.PreduzecesController",
+    "Method": "UploadPreduzeceLogo",
+    "RelativePath": "api/Preduzeces/upload-logo/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "logoImage",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "carGooBackend.Controllers.SupportController",
+    "Method": "SendSupportRequest",
+    "RelativePath": "api/Support",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "carGooBackend.DTOs.SupportRequestDto",
         "IsRequired": true
       }
     ],

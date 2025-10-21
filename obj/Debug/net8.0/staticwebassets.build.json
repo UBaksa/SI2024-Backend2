@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "wdvwM2SuRQBgjJFu/7BFNEIVVf0Us10oXddTAbOHkX0=",
-  "Source": "carGooBackend",
-  "BasePath": "_content/carGooBackend",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"9yk13azHLUMo44UYvymWLCqI0DlLRoJuSZqW5HQxlug=","Source":"carGooBackend","BasePath":"_content/carGooBackend","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}
